@@ -37,11 +37,11 @@ Makefile используется для сборки библиотеки и т
 | 7 | `long double exp(double x)` | возвращает значение e, возведенное в заданную степень | shanikat | LOADING |
 | 8 | `long double fabs(double x)` | вычисляет абсолютное значение числа с плавающей точкой | fungusgr | DONE |
 | 9 | `long double floor(double x)` | возвращает ближайшее целое число, не превышающее заданное значение | maggytel | DONE |
-| 10 | `long double fmod(double x, double y)` | остаток операции деления с плавающей точкой | shanikat | LOADING |
+| 10 | `long double fmod(double x, double y)` | остаток операции деления с плавающей точкой | foldeslu | LOADING |
 | 11 | `long double log(double x)` | вычисляет натуральный логарифм | foldeslu | LOADING |
 | 12 | `long double pow(double base, double exp)` | возводит число в заданную степень | shanikat | LOADING |
 | 13 | `long double sin(double x)` | вычисляет синус | holdosto | DONE |
-| 14 | `long double sqrt(double x)` | вычисляет квадратный корень | foldeslu | LOADING |
+| 14 | `long double sqrt(double x)` | вычисляет квадратный корень | shanikat | LOADING |
 | 15 | `long double tan(double x)` | вычисляет тангенс | holdosto | DONE |
 
 
