@@ -1,6 +1,18 @@
+FLAGS_MACOS = -L /usr/local/lib -lcheck
+FLAGS_LINUX = -lcheck -lsubunit
+
+OS = $(shell uname)
+ifeq ($(OS), Darwin)
+SLFLAGS = $(FLAGS_MACOS)
+endif
+
+ifeq ($(OS), Linux)
+SLFLAGS = $(FLAGS_LINUX)
+endif
+
+
 CC=gcc # компилятор
 LFLAGS=-g # для сборки с отладочной информацией
-SLFLAGS=-lcheck -lsubunit # для модульного тестирования
 LIBFLAGS=-lm # для линковки c математической либой
 CFLAGS=-Wall -Wextra -Werror -std=c11 -pedantic # для обработки ошибок
 GCOVFLAGS=--coverage -fprofile-arcs -ftest-coverage # для анализа покрытия
@@ -50,4 +62,3 @@ style:
 
 # исключения для аналогичных имён файлов
 .PHONY: make clean cppcheck style memcheck test gcov_report cpp
-
