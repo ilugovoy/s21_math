@@ -62,10 +62,6 @@ $ make
 |  3  | clang:	   | sudo apt install clang					 |  brew install llvm					   |
 |  4  | 		   | 										 |  									   |
 
-для корректной работы check на macos нужно прописать пути до папки, где brew хранит установленные пакеты
-~/.zshrc
-> export CPATH=/opt/homebrew/include
-> export LIBRARY_PATH=/opt/homebrew/lib
 
 Также возможно понадобится:
 |  №  |		    Команда Linux   			|		      Команда MacOs     	  |
