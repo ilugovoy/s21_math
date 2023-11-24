@@ -5,11 +5,11 @@ ifeq ($(shell uname), Darwin)
 SLFLAGS = $(FLAGS_MACOS)
 endif
 
-CC=gcc # компилятор
-LFLAGS=-g # для сборки с отладочной информацией
-LIBFLAGS=-lm # для линковки c математической либой
-CFLAGS=-Wall -Wextra -Werror -std=c11 -pedantic # для обработки ошибок
-GCOVFLAGS=--coverage -fprofile-arcs -ftest-coverage # для анализа покрытия
+CC=gcc 
+LFLAGS=-g 
+LIBFLAGS=-lm 
+CFLAGS=-Wall -Wextra -Werror -std=c11 -pedantic 
+GCOVFLAGS=--coverage -fprofile-arcs -ftest-coverage
 
 
 all: s21_math.a test gcov_report cpp 
