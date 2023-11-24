@@ -1,15 +1,9 @@
 FLAGS_MACOS = -L /usr/local/lib -lcheck
-FLAGS_LINUX = -lcheck -lsubunit
+SLFLAGS = -lcheck -lsubunit
 
-OS = $(shell uname)
-ifeq ($(OS), Darwin)
+ifeq ($(shell uname), Darwin)
 SLFLAGS = $(FLAGS_MACOS)
 endif
-
-ifeq ($(OS), Linux)
-SLFLAGS = $(FLAGS_LINUX)
-endif
-
 
 CC=gcc # компилятор
 LFLAGS=-g # для сборки с отладочной информацией
@@ -62,3 +56,4 @@ style:
 
 # исключения для аналогичных имён файлов
 .PHONY: make clean cppcheck style memcheck test gcov_report cpp
+
