@@ -247,6 +247,7 @@ long double s21_pow(double x, double y) {
       result = 1.0 / result;
     } else {
       result = s21_exp(y * log(x)); // если тут поставить s21_log то failed: s21_pow(666666.4, -1.5) == 4.72482e-06, pow(666666.4, -1.5) == 1.83712e-09, 1e-6
+      	  								          // исправить точность
     }
     return result;
   }
