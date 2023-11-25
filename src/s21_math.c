@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdbool.h>
 
-// заменить все стандартные pow, fmod и тп на s21_***!!
+// заменить в pow, log на s21_log!!
 
 //__fungusgr
 
@@ -64,12 +64,12 @@ long double s21_floor(double x) {
 long double s21_sin(double x) {
   double eps = 1.0 / 1000000000000000.0;
   int sign = (x < 0) ? -1 : 1;
-  x = fmod(s21_fabs(x), 2 * PI);  // если тут поставить s21_fmod то (after this point) Test timeout expired
-  if (x > PI) {
-    x -= PI;
+  x = s21_fmod(s21_fabs(x), 2 * MY_PI);  
+  if (x > MY_PI) {
+    x -= MY_PI;
     sign *= -1;
   }
-  if (x > PI / 2) x = PI - x;
+  if (x > MY_PI / 2) x = MY_PI - x;
   double t = x, res = x;
   for (int n = 3; s21_fabs(t) > eps; n += 2) {
     t = -t * x * x / n / (n - 1);
@@ -80,7 +80,7 @@ long double s21_sin(double x) {
 
 long double s21_cos(double x) {
   double eps = 1.0 / 1000000000000000.0;
-  x = fmod(s21_fabs(x), 2 * PI); // если тут поставить s21_fmod то (after this point) Test timeout expired
+  x = s21_fmod(s21_fabs(x), 2 * MY_PI); 
   double t = 1, res = 1;
   for (int n = 1; s21_fabs(t) > eps; n += 1) {
     t = -t * x * x / ((2 * n - 1) * (2 * n));
@@ -138,7 +138,7 @@ long double s21_atan(double x) {
       flag = 0;
       i++;
     }
-    result = res_tmp + (PI * (s21_sqrt(s21_pow(x, 2.)))) / (2. * x);
+    result = res_tmp + (MY_PI * (s21_sqrt(s21_pow(x, 2.)))) / (2. * x);
   }
   if (x == 1.0 / 0.0) result = MY_PI_2;
   if (x == -1.0 / 0.0) result = -MY_PI_2;
@@ -185,32 +185,44 @@ long double s21_exp(double x) {
     while (result - last_result > 1e-6) {
       i++;
       last_result = result;
-      result += s21_pow(x, i) / factorial(i);
+      result += s21_pow(x, i) / s21_factorial(i);
     }
     result = a < 0 ? 1 / result : result;
   }
   return result;
 }
 
-long double factorial(double n) {
+long double s21_factorial(double n) {
   if (n == 1)
     return 1;
-  return factorial(n - 1) * n;
+  return s21_factorial(n - 1) * n;
 }
 
 //__foldeslu
 
+// long double s21_fmod(double x, double y) {
+//   double result = 0.0;
+//   if (y == S21_MAX_INF || y == S21_MIN_INF)
+//     result = x;
+//   else if (y == S21_MAX_NAN || y == S21_MIN_NAN)
+//     result = S21_MAX_NAN;
+//   else {
+//     double quotient = x / y;
+//     double floor_quotient = (double)((long long)quotient);
+//     result = x - y * floor_quotient;
+//     if (x < 0 && result == 0) result = -result;
+//   }
+//   return result;
+// }
+
 long double s21_fmod(double x, double y) {
-  double result = 0.0;
-  if (y == S21_MAX_INF || y == S21_MIN_INF)
-    result = x;
-  else if (y == S21_MAX_NAN || y == S21_MIN_NAN)
-    result = S21_MAX_NAN;
+  long double result;
+  if (y == S21_MAX_INF || y == S21_MIN_INF) result = x;
+  else if (y == S21_MAX_NAN || y == S21_MIN_NAN) result = S21_MAX_NAN;
   else {
-    double quotient = x / y;
-    double floor_quotient = (double)((long long)quotient);
-    result = x - y * floor_quotient;
-    if (x < 0 && result == 0) result = -result;
+    long double quotient = x / y;
+    long double fractional_part = s21_floor(quotient);
+    result = x - (quotient < 0 ? s21_ceil(quotient) : fractional_part) * y;
   }
   return result;
 }
