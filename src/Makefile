@@ -14,7 +14,6 @@ GCOVFLAGS=--coverage -fprofile-arcs -ftest-coverage # для анализа по
 
 all: s21_math.a test gcov_report cpp
 # style
-# libs_and_utils_check
 
 %.o: %.c test_21_math.h
 	$(CC) $(CFLAGS) $(LFLAGS) $< $(GCOVFLAGS) -o $@
@@ -52,10 +51,10 @@ cpp:
 	@cppcheck --enable=all --suppress=missingIncludeSystem *.c *.h
 
 style:
-	@cd scripts && bash ./style_test.sh || (echo "Style tests failed")
+	@cd materials/scripts && bash ./style_test.sh || (echo "Style tests failed")
 
-libs_and_utils_check:
-	@cd scripts && bash ./check_gcov_lcov.sh || (echo "check_gcov_lcov.sh failed")
+check:
+	@cd materials/scripts && bash ./check_gcov_lcov.sh || (echo "check_gcov_lcov.sh failed")
 
 
 # исключения для аналогичных имён файлов
