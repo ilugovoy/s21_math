@@ -56,10 +56,7 @@ Makefile используется для сборки библиотеки и т
   | 2 | lcov:    | sudo apt-get install lcov          | brew install lcov |
   | 3 | gcov:    | sudo apt-get install gcov          | xcode-select --install |
 
-</details>
-
-<details>
-  <summary>Также возможно понадобится</summary>
+  Также возможно понадобится
 
   | № | Команда Linux                      | Команда MacOs |
   |---|------------------------------------|----------------|
