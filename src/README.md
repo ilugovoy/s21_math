@@ -44,6 +44,29 @@ Makefile используется для сборки библиотеки и т
 ### Использование
 Для использования библиотеки необходимо скомпилировать проект, включая исходный код библиотеки и модульные тесты, с помощью Makefile.    
 
+***Для работы программы необходима установленная дбиблиотека check + утилиты lcov и gcov.***  
+Проверка их наличия и установка осуществляется с помощью скрипта src/materials/scripts/check_gcov_lcov.sh командой `make check`  
+
+<details>
+  <summary>Команды для ручной установки</summary>
+
+  | № | Ресурс   | Команда Linux                      | Команда MacOs |
+  |---|----------|------------------------------------|----------------|
+  | 1 | check.h: | sudo apt-get install check         | brew install check |
+  | 2 | lcov:    | sudo apt-get install lcov          | brew install lcov |
+  | 3 | gcov:    | sudo apt-get install gcov          | xcode-select --install |
+
+</details>
+
+<details>
+  <summary>Также возможно понадобится</summary>
+
+  | № | Команда Linux                      | Команда MacOs |
+  |---|------------------------------------|----------------|
+  | 1 | sudo apt-get update                | brew update    |
+  | 2 | sudo apt-get install --fix-missing |                |
+
+</details>
 
 ## Сборка
 
@@ -51,22 +74,11 @@ Makefile используется для сборки библиотеки и т
 $ git clone 
 $ cd
 $ git switch develop  
+$ make check
 $ make
+
 ```
-Для работы программы нужны:
-|  №  |   Ресурс   |		    Команда Linux   			 |		      Команда MacOs     	 	   |
-| --- | ---------- | --------------------------------------- | --------------------------------------- |
-|  1  | check.h:   | sudo apt-get install check 			 |  brew install check					   |
-|  2  | lcov: 	   | sudo apt-get install lcov 				 |  brew install lcov					   |
-|  3  |	gcov:      | sudo apt-get install gcov			 	 |  xcode-select --install			   	   |
 
-
-Также возможно понадобится:
-|  №  |		    Команда Linux   			|		      Команда MacOs     	  |
-| --- | ----------------------------------- | ----------------------------------- |
-|  1  | sudo apt-get update					| brew update 						  |
-|  2  | sudo apt-get install --fix-missing	|  									  |
-|  3  |   									|  									  |
 
 ## Тесты
 Модульные тесты реализованы при помощи библиотеки Check и утилиты gcov.  
