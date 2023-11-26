@@ -49,8 +49,8 @@ Makefile используется для сборки библиотеки и т
 
 ```
 $ git clone 
+$ cd
 $ git switch develop  
-$ cd 
 $ make
 ```
 Для работы программы нужны:
