@@ -58,14 +58,13 @@ $ make
 | --- | ---------- | --------------------------------------- | --------------------------------------- |
 |  1  | check.h:   | sudo apt-get install check 			 |  brew install check					   |
 |  2  | lcov: 	   | sudo apt-get install lcov 				 |  brew install lcov					   |
-|  3  | clang:	   | sudo apt install clang					 |  brew install llvm					   |
-|  4  | 		   | 										 |  									   |
+|  3  |	   | 			 |  				   |
 
 
 Также возможно понадобится:
 |  №  |		    Команда Linux   			|		      Команда MacOs     	  |
 | --- | ----------------------------------- | ----------------------------------- |
-|  1  | sudo apt-get update					|  									  |
+|  1  | sudo apt-get update					| brew update |
 |  2  | sudo apt-get install --fix-missing	|  									  |
 |  3  |   									|  									  |
 
