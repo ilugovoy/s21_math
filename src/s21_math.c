@@ -3,8 +3,6 @@
 #include <math.h>
 #include <stdbool.h>
 
-// заменить в pow, log на s21_log!!
-
 //__fungusgr
 
 int s21_abs(int x) {
@@ -157,7 +155,7 @@ long double s21_log(double x) {
     result = S21_MAX_NAN;
   else if (x != S21_MAX_INF && !(x < 0 || x == S21_MIN_INF)) {
     double z = (x - 1) / (x + 1);
-    for (int i = 1; i < 1000; i += 2) {
+    for (int i = 1; i < 6500; i += 2) {
       result += s21_pow(z, i) / i;
     }
     result *= 2;
@@ -246,8 +244,7 @@ long double s21_pow(double x, double y) {
       }
       result = 1.0 / result;
     } else {
-      result = s21_exp(y * log(x)); // если тут поставить s21_log то failed: s21_pow(666666.4, -1.5) == 4.72482e-06, pow(666666.4, -1.5) == 1.83712e-09, 1e-6
-      	  								          // исправить точность
+      result = s21_exp(y * s21_log(x)); 
     }
     return result;
   }
