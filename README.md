@@ -92,7 +92,7 @@ Makefile используется для сборки библиотеки и т
 ## Сборка
 
 ```
-$ git clone ssh://git@repos-ssh.21-school.ru:2289/students/C4_s21_math.ID_353528/Team__TL__holdosto_student.21_school.ru_.TCGIHGWbRdSsxc9r94P2xg/C4_s21_math-1.git
+$ git clone https://github.com/ilugovoy/s21_math.git  
 $ cd src
 $ git switch develop  
 $ make check
